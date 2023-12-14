@@ -1,0 +1,1 @@
+A Discord bot for Mythbound Games, that will scrape the various social media profiles and RSS feed for Mythbound Games and post links to posts and published articles into the corrisponding Discord channels on the Mythbound Games Discord Server.
