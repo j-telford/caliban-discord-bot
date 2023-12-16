@@ -54,4 +54,4 @@ config**
 bak/**
 
 # Dist / Production directories 
-/dist/
+/dist/**
