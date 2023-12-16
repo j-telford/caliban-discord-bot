@@ -3,6 +3,7 @@ const gulp = require("gulp");
 const zip = require("gulp-zip");
 const del = require("del");
 const sftp = require("ssh2-sftp-client");
+const packageJson = require("./package.json");
 const config = require("config");
 
 // Define the task to SCP the zip archive to the server
@@ -47,8 +48,8 @@ gulp.task("zip", () => {
     fs.mkdirSync("./dist");
   }
 
-  const packageName = config.get("name");
-  const version = config.get("version");
+  const packageName = config.has("name") ? config.get("name") : "caliban";
+  const version = packageJson.version;
   const zipName = `${packageName}-${version}.zip`;
 
   return gulp
