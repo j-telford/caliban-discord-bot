@@ -4,33 +4,22 @@ const zip = require("gulp-zip");
 const del = require("del");
 const sftp = require("ssh2-sftp-client");
 const packageJson = require("./package.json");
-const config = require("./config.json");
+require("dotenv").config(); // Load environment variables from .env file
 
-// Define the task to SCP the zip archive to the server
-gulp.task("scp", async () => {
-  const client = new sftp();
+// Use process.env to get environment variables
+const MY_PROJECT_HOST = process.env.MY_PROJECT_HOST;
+const MY_PROJECT_PORT = parseInt(process.env.MY_PROJECT_PORT, 10);
+const MY_PROJECT_USERNAME = process.env.MY_PROJECT_USERNAME;
+const MY_PROJECT_PRIVATE_KEY_PATH = process.env.MY_PROJECT_PRIVATE_KEY_PATH;
+const MY_PROJECT_PASSWORD = process.env.MY_PROJECT_PASSWORD;
+const MY_PROJECT_REMOTE_PATH = process.env.MY_PROJECT_REMOTE_PATH;
 
-  try {
-    const connectionConfig = {
-      host: config.host,
-      port: config.port,
-      username: config.username,
-      privateKey: fs.readFileSync(config.privateKeyPath),
-      passphrase: config.privateKeyPassphrase,
-    };
-
-    // Customize the remote path as needed
-    const remotePath = config.remotePath;
-
-    await client.connect(connectionConfig);
-    await client.uploadDir("dist", remotePath);
-  } finally {
-    client.end();
-  }
-});
+// Use process.env to get environment variables
+const scppassword = MY_PROJECT_PASSWORD;
 
 // Define the task to create a zip archive
 gulp.task("zip", () => {
+  // Check if the dist directory exists, and create it if not
   if (!fs.existsSync("./dist")) {
     fs.mkdirSync("./dist");
   }
@@ -50,6 +39,28 @@ gulp.task("zip", () => {
     ])
     .pipe(zip(zipName))
     .pipe(gulp.dest("./dist"));
+});
+
+// Define the task to SCP the zip archive to the server
+gulp.task("scp", async () => {
+  const client = new sftp();
+
+  try {
+    const connectionConfig = {
+      host: MY_PROJECT_HOST,
+      port: MY_PROJECT_PORT,
+      username: MY_PROJECT_USERNAME,
+      privateKey: fs.readFileSync(MY_PROJECT_PRIVATE_KEY_PATH),
+      passphrase: MY_PROJECT_PASSWORD,
+    };
+
+    const remotePath = MY_PROJECT_REMOTE_PATH;
+
+    await client.connect(connectionConfig);
+    await client.uploadDir("dist", remotePath);
+  } finally {
+    client.end();
+  }
 });
 
 // Define the task to clean the /dist directory
