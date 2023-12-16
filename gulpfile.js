@@ -78,5 +78,5 @@ gulp.task("default", gulp.series("reset"));
 gulp.task("run-local", () => {
   // You can add any other necessary configurations for running the bot locally
   // For example, you might want to pass the local token here
-  client.login(MY_PROJECT_TOKEN);
+  client.login(BOT_TOKEN);
 });
