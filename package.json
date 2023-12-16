@@ -8,6 +8,7 @@
     "zip": "gulp zip",
     "scp": "gulp scp",
     "clean": "gulp clean",
+    "run-local": "gulp run-local",
     "reset": "gulp reset"
   },
   "keywords": [
