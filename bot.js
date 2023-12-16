@@ -23,8 +23,8 @@ client.once("ready", () => {
 // Function to fetch and post new articles
 async function fetchAndPostArticles() {
   try {
-    // Parse the RSS feed
-    const feed = await parser.parseURL("https://mythbound.online/rss");
+    // Parse the RSS feed using the environment variable directly
+    const feed = await parser.parseURL(process.env.RSS_FEED_URL);
 
     // Find the "published-articles" channel
     const channel = client.channels.cache.find(
