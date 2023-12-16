@@ -1,7 +1,9 @@
 const { Client, GatewayIntentBits } = require("discord.js");
 const Parser = require("rss-parser");
-const dotenv = require("dotenv");
-dotenv.config();
+if (process.env.NODE_ENV === "development") {
+  const dotenv = require("dotenv");
+  dotenv.config();
+}
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
