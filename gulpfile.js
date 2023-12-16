@@ -1,3 +1,4 @@
+const fs = require("fs");
 const gulp = require("gulp");
 const zip = require("gulp-zip");
 const del = require("del");
@@ -37,11 +38,12 @@ gulp.task("scp", async () => {
       host: "mythbound.online",
       port: 22,
       username: "jay",
-      agent: process.env.SSH_AUTH_SOCK, // Use the SSH agent for authentication
+      privateKey: fs.readFileSync("C:/Users/telfo/.ssh/id_rsa"),
+      passphrase: "superdooper1",
     });
 
     // Update the remote path as needed
-    const remotePath = "~/discordbot/";
+    const remotePath = "/home/jay/caliban/dist";
 
     // Upload the zip file
     await client.uploadDir("dist", remotePath);
