@@ -13,6 +13,7 @@ const MY_PROJECT_USERNAME = process.env.MY_PROJECT_USERNAME;
 const MY_PROJECT_PRIVATE_KEY_PATH = process.env.MY_PROJECT_PRIVATE_KEY_PATH;
 const MY_PROJECT_PASSWORD = process.env.MY_PROJECT_PASSWORD;
 const MY_PROJECT_REMOTE_PATH = process.env.MY_PROJECT_REMOTE_PATH;
+const BOT_TOKEN = process.env.BOT_TOKEN;
 
 // Use process.env to get environment variables
 const scppassword = MY_PROJECT_PASSWORD;
@@ -35,6 +36,7 @@ gulp.task("zip", () => {
       "package.json",
       "LICENSE",
       "README.md",
+      ".env_production",
       // Add other necessary files
     ])
     .pipe(zip(zipName))
@@ -71,3 +73,10 @@ gulp.task("reset", gulp.series("clean", "zip", "scp"));
 
 // Define the default task to run all tasks
 gulp.task("default", gulp.series("reset"));
+
+// Create a task to run the bot locally
+gulp.task("run-local", () => {
+  // You can add any other necessary configurations for running the bot locally
+  // For example, you might want to pass the local token here
+  client.login(MY_PROJECT_TOKEN);
+});

@@ -1,5 +1,7 @@
 const { Client, GatewayIntentBits } = require("discord.js");
 const Parser = require("rss-parser");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
@@ -45,6 +47,5 @@ async function fetchAndPostArticles() {
   }
 }
 
-client.login(
-  "MTE4NDg0MzI1NjI2MjA1MzkyOA.Gl7b_p.vVzWq49oc_khIfE9i2unWq4ftzXh2OV9seuMEw"
-);
+// Use process.env to get the bot token
+client.login(process.env.BOT_TOKEN);

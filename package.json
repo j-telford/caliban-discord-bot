@@ -1,6 +1,6 @@
 {
   "name": "caliban",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A Discord bot for Mythbound Games. Scrapes RSS feeds from the online magazine",
   "main": "bot.js",
   "scripts": {
@@ -32,10 +32,10 @@
   },
   "devDependencies": {
     "config": "^3.3.9",
+    "del": "^6.0.0",
     "dotenv": "^16.3.1",
     "gulp": "^4.0.2",
     "gulp-zip": "^5.1.0",
-    "del": "^6.0.0",
     "ssh2-sftp-client": "^7.0.0"
   }
 }

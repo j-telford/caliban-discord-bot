@@ -48,6 +48,7 @@ $RECYCLE.BIN/
 # Private info
 private_files/**
 config**
+.env_production
 
 # Backup files
 bak/**
