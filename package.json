@@ -4,7 +4,10 @@
   "description": "A Discord bot for Mythbound Games. Scrapes RSS feeds from the online magazine",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "zip": "gulp zip",
+    "clean": "gulp clean",
+    "build": "gulp"
   },
   "keywords": [
     "Discord",
@@ -24,5 +27,11 @@
   "dependencies": {
     "discord.js": "^14.14.1",
     "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^0.5.0",
+    "ssh2-sftp-client": "^9.1.0"
   }
 }

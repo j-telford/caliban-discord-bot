@@ -1,0 +1,26 @@
+const gulp = require("gulp");
+const zip = require("gulp-zip");
+const del = require("del");
+const packageJson = require("./package.json");
+
+// Define the task to create a zip archive
+gulp.task("zip", () => {
+  const packageName = packageJson.name;
+  const version = packageJson.version;
+  const zipName = `${packageName}-${version}.zip`;
+
+  return gulp
+    .src([
+      "bot.js",
+      "package-lock.json",
+      "package.json",
+      "LICENSE",
+      "README.md",
+      // Add other necessary files
+    ])
+    .pipe(zip(zipName))
+    .pipe(gulp.dest("./dist"));
+});
+
+// Define the task to clean the /dist directory
+gulp.task("clean", () => del(["dist"]));
