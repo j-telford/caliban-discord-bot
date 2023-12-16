@@ -26,11 +26,14 @@
     "url": "https://github.com/j-telford/mythbound-discord-bot/issues"
   },
   "dependencies": {
+    "del": "^6.0.0",
     "discord.js": "^14.14.1",
-    "rss-parser": "^3.13.0",
     "gulp": "^4.0.2",
     "gulp-zip": "^5.1.0",
-    "del": "^6.0.0",
+    "rss-parser": "^3.13.0",
     "ssh2-sftp-client": "^7.0.0"
+  },
+  "devDependencies": {
+    "config": "^3.3.9"
   }
 }

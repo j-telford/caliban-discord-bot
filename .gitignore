@@ -44,3 +44,10 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+
+# Private info
+private_files/**
+config.json
+
+# Backup files
+bak/**
