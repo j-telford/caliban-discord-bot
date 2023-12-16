@@ -4,7 +4,7 @@ const zip = require("gulp-zip");
 const del = require("del");
 const sftp = require("ssh2-sftp-client");
 const packageJson = require("./package.json");
-const config = require("config");
+const config = require("config.json");
 
 // Define the task to SCP the zip archive to the server
 gulp.task("scp", async () => {
