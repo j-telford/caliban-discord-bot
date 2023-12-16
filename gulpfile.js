@@ -4,7 +4,7 @@ const zip = require("gulp-zip");
 const del = require("del");
 const sftp = require("ssh2-sftp-client");
 const packageJson = require("./package.json");
-const config = require("config.json");
+const config = require("./config.json");
 
 // Define the task to SCP the zip archive to the server
 gulp.task("scp", async () => {
@@ -12,29 +12,17 @@ gulp.task("scp", async () => {
 
   try {
     const connectionConfig = {
-      host: config.get("host"),
-      port: config.get("port"),
-      username: config.get("username"),
+      host: config.host,
+      port: config.port,
+      username: config.username,
+      privateKey: fs.readFileSync(config.privateKeyPath),
+      passphrase: config.privateKeyPassphrase,
     };
 
-    // Check if private key path is defined in config
-    if (config.has("privateKeyPath")) {
-      connectionConfig.privateKey = fs.readFileSync(
-        config.get("privateKeyPath")
-      );
-    }
-
-    // Check if password is defined in config
-    if (config.has("password")) {
-      connectionConfig.password = config.get("password");
-    }
+    // Customize the remote path as needed
+    const remotePath = config.remotePath;
 
     await client.connect(connectionConfig);
-
-    // Update the remote path as needed
-    const remotePath = "~/discordbot/";
-
-    // Upload the zip file
     await client.uploadDir("dist", remotePath);
   } finally {
     client.end();
@@ -43,12 +31,11 @@ gulp.task("scp", async () => {
 
 // Define the task to create a zip archive
 gulp.task("zip", () => {
-  // Check if the dist directory exists, and create it if not
   if (!fs.existsSync("./dist")) {
     fs.mkdirSync("./dist");
   }
 
-  const packageName = config.has("name") ? config.get("name") : "caliban";
+  const packageName = packageJson.name;
   const version = packageJson.version;
   const zipName = `${packageName}-${version}.zip`;
 

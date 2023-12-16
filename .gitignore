@@ -47,7 +47,7 @@ $RECYCLE.BIN/
 
 # Private info
 private_files/**
-**/config/**
+config**
 
 # Backup files
 bak/**
