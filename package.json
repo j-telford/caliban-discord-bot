@@ -22,10 +22,10 @@
   "license": "NIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/j-telford/mythbound-discord-bot"
+    "url": "https://github.com/j-telford/caliban-discord-bot"
   },
   "bugs": {
-    "url": "https://github.com/j-telford/mythbound-discord-bot/issues"
+    "url": "https://github.com/j-telford/caliban-discord-bot/issues"
   },
   "dependencies": {
     "discord.js": "^14.14.1",
