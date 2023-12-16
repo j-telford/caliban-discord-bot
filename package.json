@@ -1,14 +1,26 @@
 {
   "name": "caliban",
-  "version": "1.0.0",
-  "description": "A Discord bot for Mythbound Games.",
+  "version": "1.0.1",
+  "description": "A Discord bot for Mythbound Games. Scrapes RSS feeds from the online magazine",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Discord",
+    "bot",
+    "RSS feed",
+    "Mythbound Games"
+  ],
+  "author": "Jay Telford <hello@jaytelford.me>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/j-telford/mythbound-discord-bot"
+  },
+  "bugs": {
+    "url": "https://github.com/j-telford/mythbound-discord-bot/issues"
+  },
   "dependencies": {
     "discord.js": "^14.14.1",
     "rss-parser": "^3.13.0"
