@@ -37,6 +37,7 @@ gulp.task("zip", () => {
       "LICENSE",
       "README.md",
       ".env_production",
+      "ecosystem.config.js",
       // Add other necessary files
     ])
     .pipe(zip(zipName))
