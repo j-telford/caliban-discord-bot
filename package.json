@@ -1,6 +1,6 @@
 {
   "name": "caliban",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A Discord bot for Mythbound Games. Scrapes RSS feeds from the online magazine",
   "main": "bot.js",
   "scripts": {
